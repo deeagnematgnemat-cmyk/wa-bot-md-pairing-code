@@ -21,13 +21,9 @@ const readLine = require('readline');
 const qrCodeTerminal = require('qrcode-terminal');
 const chalk = require('chalk');
 const fs = require('fs');
-const mongoose = require('mongoose');
-const cron = require('node-cron');
 const FileType = require('file-type');
 
 const config = require('./config/settings.js');
-const db = require('./models/connectionModel.js');
-const userSchema = require('./models/schemaModel.js');
 
 const {
   smsg,
@@ -87,25 +83,6 @@ async function startServer() {
         console.log(chalk.cyan(`- Name     : ${userName}`));
         console.log(chalk.cyan(`- Number   : ${sock.user.id.split(':')[0]}`));
         console.log(chalk.cyan(`- Status   : Connected`));
-
-        db.once('connected', () => {
-          console.log(chalk.greenBright('Connected to MongoDB'));
-        });
-
-        cron.schedule(config.cron_jobs.time, async () => {
-          try {
-            await userSchema.updateMany({
-              accountType: 'Free'
-            }, {
-              dailyLimit: config.daily_limit.free
-            });
-            console.log('Limit harian telah direset untuk pengguna tipe "Free".');
-          } catch (error) {
-            console.error('Gagal mereset limit harian:', error.message);
-          }
-        }, {
-          timezone: config.cron_jobs.timezone
-        });
       }
     });
 
