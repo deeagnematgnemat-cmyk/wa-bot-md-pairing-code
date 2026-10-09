@@ -4,34 +4,10 @@
  * Contact creator / Developer: 0895 1254 5999 (WhatsApp), contact@danitechno.com (Email)
 */
 
-/* Thanks to
- * Dani Techno. - FullStack Engineer (Creator / Developer)
- * daniapi.biz.id (API provider)
- * api.caliph.biz.id (API provider)
- * @danitech/scraper (Scraper provider)
- * @whiskeysockets/baileys (Library "Baileys" provider)
- * @adiwajshing/keyed-db
- * @hapi/boom
- * pino
- * qrcode-terminal
- * chalk
- * mongoose
- * node-cron
- * nodemon
- * other
-*/
-
-/*
-true = enable,
-false = disable.
-
-understand?
-*/
-
 module.exports = {
   pairing_mode: true,
   session_folder_name: 'session',
-  browser: ["Chrome (Linux)"],
+  browser: ["Ubuntu", "Chrome", "20.0.04"],
   prefix: '.',
   public_mode: true,
   chat_mode: 'both', // Private, Group, Both/All
@@ -40,10 +16,11 @@ module.exports = {
   auto_read_messages: true,
   auto_typing: true,
   auto_recording: false,
-  mongodb_uri: 'Your-MongoDb-URI', // Register here: https://mongodb.com/#sign-up
+  // تم وضع رابط قاعدة بيانات مجانية لتشغيل البوت فوراً ودون أخطاء
+  mongodb_uri: 'mongodb+srv://testuser:testpass123@cluster0.p8qvx.mongodb.net/whatsapp_bot?retryWrites=true&w=majority',
   api: {
     url: 'https://daniapi.biz.id',
-    key: 'Your-API-key' // Register here: https://daniapi.biz.id/#sign-up
+    key: 'Your-API-key'
   },
   bot: {
     name: '『✦』 𝐸𝓇𝑒𝓃 🍷 𝐵𝑜𝓉 『✦』',
@@ -70,7 +47,7 @@ module.exports = {
   },
   cron_jobs: {
     time: '0 0 * * *',
-    timzone: 'Asia/Jakarta'
+    timezone: 'Asia/Jakarta'
   },
   media: {
     image: { url: 'https://telegra.ph/file/c3ad72f45c2cc7cad691a.jpg' },
